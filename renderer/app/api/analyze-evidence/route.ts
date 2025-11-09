@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     })
 
     // 🚀 DEMO MODE: Hardcoded evidence for Room scene ONLY (for presentation/testing)
-    const isDemoMode = sceneName.toLowerCase() === 'room'
+    const isDemoMode = sceneName.toLowerCase() === 'dorm room death'
     if (isDemoMode) {
       console.log('🎯 DEMO MODE: Using hardcoded evidence points for "Room" scene')
       const demoEvidence: EvidencePoint[] = [

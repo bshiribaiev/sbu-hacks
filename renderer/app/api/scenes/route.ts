@@ -37,7 +37,12 @@ export async function GET() {
         
         // Find the parent scene file (matches folder name)
         const parentFile = folderFiles.find(f => f === `${folderName}.glb`)
-        const parentSceneName = formatName(folderName)
+        let parentSceneName = formatName(folderName)
+        
+        // Override specific scene names
+        if (folderName === 'room') {
+          parentSceneName = 'Dorm Room Death'
+        }
         
         if (parentFile) {
           // Add parent scene

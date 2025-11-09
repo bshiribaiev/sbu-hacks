@@ -100,7 +100,11 @@ async function GET() {
                 const folderFiles = __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].readdirSync(folderPath);
                 // Find the parent scene file (matches folder name)
                 const parentFile = folderFiles.find((f)=>f === `${folderName}.glb`);
-                const parentSceneName = formatName(folderName);
+                let parentSceneName = formatName(folderName);
+                // Override specific scene names
+                if (folderName === 'room') {
+                    parentSceneName = 'Dorm Room Death';
+                }
                 if (parentFile) {
                     // Add parent scene
                     const parentId = scenes.length + 1;
