@@ -19,7 +19,7 @@ An interactive app that lets investigators explore 3D scene reconstructions and 
 *   🧊 **Interactive 3D Viewer:** Renders `.glb` models directly in the browser with intuitive orbit, zoom, and pan controls.
 *   🤖 **AI Evidence Detection:** Automatically finds objects, anomalies, and potential evidence, returning labeled 3D markers with confidence scores.
 *   🧠 **Dual Analysis Modes:**
-    *   **Quick Analysis:** Leverages model metadata and structure for rapid insights.
+    *   **Quick Analysis:** Leverages 3D model geometry and metadata for rapid insights.
     *   **Vision Analysis:** Sends a screenshot of the current 3D view to Gemini for detailed visual inspection.
 *   📂 **Case Management System:** Organize your work with parent/child scenes, a detailed information panel, and a note-taking system for each piece of evidence.
 *   ⬆️ **Simple Uploads:** Easily add new `.glb` models or other supporting files to any scene.
@@ -32,18 +32,17 @@ We used a modern, high-performance tech stack to bring SceneSplat to life.
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 🌐 **Web Application**       | ![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white) ![React](https://img.shields.io/badge/React-blue?logo=react) ![Tailwind CSS](https://img.shields.io/badge/-TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white) |
 | 🧊 **3D Rendering Engine**   | ![React Three Fiber](https://img.shields.io/badge/React_Three_Fiber-000000?logo=react) ![three.js](https://img.shields.io/badge/three.js-000000?logo=three.js&logoColor=white)                                                                      |
-| 🧠 **AI Vision Analysis**    | ![Google Gemini](https://img.shields.io/badge/Google-Gemini_Pro-4285F4?logo=google&logoColor=white)                                                                                                                                                  |
+| 🧠 **AI Vision Analysis**    | ![Google Gemini](https://img.shields.io/badge/Google-Gemini_Flash-4285F4?logo=google&logoColor=white)                                                                                                                                               |
 | 🧩 **UI Components**         | ![Radix UI](https://img.shields.io/badge/Radix_UI-161618?logo=radix-ui&logoColor=white)                                                                                                                                                              |
 | ⚙️ **Runtime Environment**  | ![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white)                                                                                                                                                           |
 
 ### How It Works
+The backend logic is handled via Next.js API Routes. The data flows from the 3D model to actionable insights through a streamlined pipeline:
 
-The data flows from the 3D model to actionable insights through a streamlined pipeline:
-
-1.  A `.glb` scene is loaded and rendered in the browser using React Three Fiber.
-2.  For **Vision Analysis**, a screenshot of the current 3D viewport is captured and sent to the Gemini API.
-3.  Gemini processes the image and returns structured data identifying potential evidence.
-4.  This data is converted into 3D markers and notes, which are then rendered in the scene and persisted as part of the case file.
+1.  A `.glb` scene is loaded from the `public/models` directory and rendered using React Three Fiber.
+2.  For **Vision Analysis**, a screenshot of the 3D viewport is sent to the Gemini API.
+3.  Gemini processes the image and returns structured JSON identifying potential evidence.
+4.  This data is converted into 3D markers and notes, which are rendered in the scene and persisted for the session.
 
 ![System Diagram](./system-diagram.png)
 
@@ -55,28 +54,58 @@ To run this project locally, follow these steps:
 *   Node.js (v20 or later)
 *   npm, yarn, or pnpm
 
-**Installation:**
+**1. Installation**
 
-1.  Clone the repository:
+```bash
+# Clone the repository
+git clone https://github.com/your-username/scenesplat.git
+cd scenesplat
+
+# Install dependencies
+npm install
+```
+
+**2. Environment Setup (Optional but Recommended)**
+
+The full AI analysis features are powered by Google Gemini.
+
+1.  Create an environment file by copying the example:
     ```bash
-    git clone https://github.com/your-username/scenesplat.git
-    cd scenesplat
+    cp .env.example .env.local
     ```
 
-2.  Install the dependencies:
-    ```bash
-    npm install
+2.  Open `.env.local` and add your Google Gemini API key:
     ```
+    GEMINI_API_KEY="YOUR_API_KEY_HERE"
+    ```
+    > **Note:** If you don't provide an API key, the application will fall back to using hardcoded demo data and mock analysis. The vision-based analysis will be disabled.
 
-3.  Set up your environment variables. Create a `.env.local` file and add your Google Gemini API key:
-    ```
-    GOOGLE_API_KEY="YOUR_API_KEY_HERE"
-    ```
+**3. Local Data Setup (Required)**
 
-4.  Run the development server:
-    ```bash
-    npm run dev
-    ```
+The application dynamically loads 3D models from the `public/models` directory. You must place your `.glb` files here for them to appear in the case selector.
+
+*   The API automatically scans this folder to create the list of available scenes.
+*   **Parent Scenes:** A `.glb` file at the root of `public/models/` will be treated as a parent scene.
+*   **Child Scenes (Evidence):** To associate individual evidence models with a parent scene, create a folder named after the scene. The main scene file must have the same name as the folder.
+
+**Example Structure:**
+```
+public/
+└── models/
+    ├── standalone-case.glb        # Appears as "Standalone Case"
+    └── dorm-room/                 # This folder creates the "Dorm Room" parent case
+        ├── dorm-room.glb          # This is the main scene model for the parent case
+        ├── bottle.glb             # Appears as a child evidence item named "Bottle"
+        ├── body.glb               # Appears as a child evidence item named "Body"
+        └── knife.glb              # Appears as a child evidence item named "Knife"
+```
+> The project includes a "Dorm Room Death" demo scene which uses hardcoded data for a reliable presentation. Make sure your local folder is named `room` to match the demo logic in the code.
+
+**4. Running the Application**
+
+```bash
+npm run dev
+```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
