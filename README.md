@@ -30,3 +30,6 @@ SBU Hacks 2025
 - **AI**: Google Gemini (`@google/generative-ai`)
 - **Runtime**: Node 20+
 
+### System diagram
+
+![System diagram](./system-diagram.png)
