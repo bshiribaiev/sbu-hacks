@@ -1,65 +1,113 @@
-## SceneSplat - 3D Scene Evidence Analyzer
+# SceneSplat
+### AI-Powered 3D Scene Analysis for Forensic Investigation
 
-An interactive app that lets investigators explore 3D scene reconstructions and automatically detect points of interest using AI.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![SBU Hacks 2025](https://img.shields.io/badge/Hackathon-SBU%20Hacks%202025-blue.svg)](https://sbuhacks.org/)
 
-Demo: https://youtu.be/xsx_s4PhBXU
+An interactive app that lets investigators explore 3D scene reconstructions and automatically detect points of interest using AI. Built for SBU Hacks 2025.
 
-![Walkthrough](./walkthrough.gif)
+**Watch the Demo: [https://youtu.be/xsx_s4PhBXU](https://youtu.be/xsx_s4PhBXU)**
 
-## Inspiration
+![Walkthrough of SceneSplat](./walkthrough.gif)
 
-Investigators spend hours combing through 3D reconstructions and photos to find likely evidence. That process is slow, manual, and error‑prone. We built SceneSplat at SBU Hacks 2025 to turn 3D scenes into actionable insights in minutes by combining AI detection with an immersive, collaborative 3D viewer.
+> Investigators spend hours combing through 3D reconstructions and photos to find likely evidence. That process is slow, manual, and error-prone. We built SceneSplat to turn 3D scenes into actionable insights in minutes by combining AI detection with an immersive, collaborative 3D viewer.
 
-## What it does
+---
 
-- 3D viewing: Renders `.glb` models in the browser with orbit/zoom/pan controls.
-- AI evidence detection: Finds objects/anomalies/evidence and returns labeled markers with confidence scores.
-- Two analysis modes:
-  - Quick analysis using model data (GLB metadata/structure)
-  - Vision analysis by sending a screenshot of the current 3D view to Gemini
-- Case management: Parent/child scenes, details panel, and notes per scene.
-- Uploads: Add new GLB or supporting files per scene.
+## ✨ Key Features
 
-## How we built it
+*   🧊 **Interactive 3D Viewer:** Renders `.glb` models directly in the browser with intuitive orbit, zoom, and pan controls.
+*   🤖 **AI Evidence Detection:** Automatically finds objects, anomalies, and potential evidence, returning labeled 3D markers with confidence scores.
+*   🧠 **Dual Analysis Modes:**
+    *   **Quick Analysis:** Leverages model metadata and structure for rapid insights.
+    *   **Vision Analysis:** Sends a screenshot of the current 3D view to Gemini for detailed visual inspection.
+*   📂 **Case Management System:** Organize your work with parent/child scenes, a detailed information panel, and a note-taking system for each piece of evidence.
+*   ⬆️ **Simple Uploads:** Easily add new `.glb` models or other supporting files to any scene.
 
-- Frontend: Next.js App Router, React 19, TailwindCSS, Radix UI
-- 3D: React Three Fiber, drei, three.js
-- AI: Google Gemini (`@google/generative-ai`)
-- Runtime: Node 20+
-- Data flow:
-  - Load `.glb` scenes and render with R3F
-  - For quick analysis, parse model/scene data
-  - For vision analysis, capture a 3D screenshot and send to Gemini
-  - Convert AI outputs into 3D markers and notes, then render and persist per case
+## 🛠️ Tech Stack & Architecture
 
-![System diagram](./system-diagram.png)
+We used a modern, high-performance tech stack to bring SceneSplat to life.
 
-## Challenges we ran into
+| Feature                      | Technology/Library                                                                                                                                                                                                                                  |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🌐 **Web Application**       | ![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white) ![React](https://img.shields.io/badge/React-blue?logo=react) ![Tailwind CSS](https://img.shields.io/badge/-TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white) |
+| 🧊 **3D Rendering Engine**   | ![React Three Fiber](https://img.shields.io/badge/React_Three_Fiber-000000?logo=react) ![three.js](https://img.shields.io/badge/three.js-000000?logo=three.js&logoColor=white)                                                                      |
+| 🧠 **AI Vision Analysis**    | ![Google Gemini](https://img.shields.io/badge/Google-Gemini_Pro-4285F4?logo=google&logoColor=white)                                                                                                                                                  |
+| 🧩 **UI Components**         | ![Radix UI](https://img.shields.io/badge/Radix_UI-161618?logo=radix-ui&logoColor=white)                                                                                                                                                              |
+| ⚙️ **Runtime Environment**  | ![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white)                                                                                                                                                           |
 
-- Normalizing GLB variants and extracting consistent scene metadata
-- Mapping AI detections to precise 3D positions and camera space
-- Performance tuning for large models in the browser
-- Handling image capture pipelines and prompt formatting for structured outputs
-- UX for evidence markers, selection, and note‑taking without clutter
+### How It Works
 
-## Accomplishments that we're proud of
+The data flows from the 3D model to actionable insights through a streamlined pipeline:
 
-- End‑to‑end flow from upload → AI analysis → 3D markers → notes
-- Reliable screenshot‑to‑detection pipeline using Gemini
-- Smooth 3D interactions and marker overlays in React Three Fiber
-- Clean, accessible UI with a fast iteration loop during the hackathon
+1.  A `.glb` scene is loaded and rendered in the browser using React Three Fiber.
+2.  For **Vision Analysis**, a screenshot of the current 3D viewport is captured and sent to the Gemini API.
+3.  Gemini processes the image and returns structured data identifying potential evidence.
+4.  This data is converted into 3D markers and notes, which are then rendered in the scene and persisted as part of the case file.
 
-## What we learned
+![System Diagram](./system-diagram.png)
 
-- Best practices for combining 3D rendering with LLM/vision outputs
-- Prompting strategies to get structured, actionable responses
-- Tradeoffs between model metadata parsing and vision‑based analysis
-- Designing UI for investigative workflows and collaboration
+## 🚀 Getting Started
 
-## What's next for SceneSplat
+To run this project locally, follow these steps:
 
-- Expand object taxonomy and improve precision/recall with fine‑tuned models
-- Multi‑user collaboration and role‑based access for cases
-- Exportable reports and chain‑of‑custody integrations
-- Support for more 3D formats and very large scenes
-- Offline and edge‑friendly inference options
+**Prerequisites:**
+*   Node.js (v20 or later)
+*   npm, yarn, or pnpm
+
+**Installation:**
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/scenesplat.git
+    cd scenesplat
+    ```
+
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Set up your environment variables. Create a `.env.local` file and add your Google Gemini API key:
+    ```
+    GOOGLE_API_KEY="YOUR_API_KEY_HERE"
+    ```
+
+4.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## 🏆 Our Hackathon Journey
+
+### Challenges We Overcame
+
+*   **Model Consistency:** Normalizing different `.glb` variants to extract consistent scene metadata was tricky.
+*   **3D Coordinate Mapping:** Accurately mapping 2D AI detections from a screenshot back to precise 3D positions in the scene's camera space required careful calculation.
+*   **Performance:** We had to fine-tune the rendering pipeline to ensure smooth performance, even with large 3D models, in the browser.
+*   **AI Prompting:** Crafting prompts for Gemini that returned reliable, structured JSON output was an iterative process.
+*   **User Experience:** Designing an intuitive UI for evidence markers, selection, and note-taking without cluttering the 3D view.
+
+### Proud Accomplishments
+
+*   Building a complete, end-to-end flow: from model upload → AI analysis → 3D markers → persistent notes.
+*   Creating a reliable screenshot-to-detection pipeline using Gemini's vision capabilities.
+*   Achieving smooth 3D interactions and marker overlays using React Three Fiber.
+*   Developing a clean, accessible UI with a fast iteration loop during the hackathon.
+
+### Key Learnings
+
+*   Best practices for integrating real-time 3D rendering with large language model (LLM) vision outputs.
+*   Effective prompting strategies to get structured, actionable responses from AI.
+*   The tradeoffs between parsing existing model metadata versus using a more flexible vision-based analysis.
+*   How to design UI/UX for complex investigative workflows that require both spatial and textual data.
+
+## 🗺️ What's Next for SceneSplat (Roadmap)
+
+- [ ] **Enhanced AI:** Expand the object taxonomy and improve detection precision by fine-tuning models.
+- [ ] **Collaboration:** Add multi-user support, real-time collaboration, and role-based access for cases.
+- [ ] **Reporting:** Implement exportable PDF reports and chain-of-custody integrations.
+- [ ] **Format Support:** Add support for more 3D formats (e.g., `.ply`, `.obj`) and streaming for very large scenes.
+- [ ] **Offline Mode:** Explore options for offline and edge-friendly inference to support fieldwork.
