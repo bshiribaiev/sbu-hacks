@@ -1636,6 +1636,564 @@ function EvidenceDetector({ sceneName, sceneDescription, modelUrl, onEvidenceDet
     }, this);
 }
 }),
+"[project]/components/ui/card.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Card",
+    ()=>Card,
+    "CardAction",
+    ()=>CardAction,
+    "CardContent",
+    ()=>CardContent,
+    "CardDescription",
+    ()=>CardDescription,
+    "CardFooter",
+    ()=>CardFooter,
+    "CardHeader",
+    ()=>CardHeader,
+    "CardTitle",
+    ()=>CardTitle
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-ssr] (ecmascript)");
+;
+;
+function Card({ className, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        "data-slot": "card",
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm', className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/components/ui/card.tsx",
+        lineNumber: 7,
+        columnNumber: 5
+    }, this);
+}
+function CardHeader({ className, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        "data-slot": "card-header",
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6', className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/components/ui/card.tsx",
+        lineNumber: 20,
+        columnNumber: 5
+    }, this);
+}
+function CardTitle({ className, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        "data-slot": "card-title",
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('leading-none font-semibold', className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/components/ui/card.tsx",
+        lineNumber: 33,
+        columnNumber: 5
+    }, this);
+}
+function CardDescription({ className, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        "data-slot": "card-description",
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('text-muted-foreground text-sm', className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/components/ui/card.tsx",
+        lineNumber: 43,
+        columnNumber: 5
+    }, this);
+}
+function CardAction({ className, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        "data-slot": "card-action",
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('col-start-2 row-span-2 row-start-1 self-start justify-self-end', className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/components/ui/card.tsx",
+        lineNumber: 53,
+        columnNumber: 5
+    }, this);
+}
+function CardContent({ className, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        "data-slot": "card-content",
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('px-6', className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/components/ui/card.tsx",
+        lineNumber: 66,
+        columnNumber: 5
+    }, this);
+}
+function CardFooter({ className, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        "data-slot": "card-footer",
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('flex items-center px-6 [.border-t]:pt-6', className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/components/ui/card.tsx",
+        lineNumber: 76,
+        columnNumber: 5
+    }, this);
+}
+;
+}),
+"[project]/components/evidence-uploader.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "EvidenceUploader",
+    ()=>EvidenceUploader
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/scroll-area.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/badge.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/upload.js [app-ssr] (ecmascript) <export default as Upload>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__File$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file.js [app-ssr] (ecmascript) <export default as File>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/image.js [app-ssr] (ecmascript) <export default as Image>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file-text.js [app-ssr] (ecmascript) <export default as FileText>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-ssr] (ecmascript) <export default as X>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/loader-circle.js [app-ssr] (ecmascript) <export default as Loader2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/box.js [app-ssr] (ecmascript) <export default as Box>");
+"use client";
+;
+;
+;
+;
+;
+;
+;
+function EvidenceUploader({ sceneId, sceneName, onFilesUploaded }) {
+    const [files, setFiles] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [uploading, setUploading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [dragActive, setDragActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [uploadSuccess, setUploadSuccess] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [uploadMessage, setUploadMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const handleDrag = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.type === "dragenter" || e.type === "dragover") {
+            setDragActive(true);
+        } else if (e.type === "dragleave") {
+            setDragActive(false);
+        }
+    }, []);
+    const handleDrop = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        setDragActive(false);
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            handleFiles(Array.from(e.dataTransfer.files));
+        }
+    }, []);
+    const handleChange = (e)=>{
+        e.preventDefault();
+        if (e.target.files && e.target.files.length > 0) {
+            handleFiles(Array.from(e.target.files));
+        }
+    };
+    const isValidFileType = (file)=>{
+        const validTypes = [
+            'image/',
+            'video/',
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'text/plain',
+            'model/gltf-binary',
+            '.glb' // fallback for GLB detection
+        ];
+        return validTypes.some((type)=>file.type.startsWith(type) || file.name.toLowerCase().endsWith(type));
+    };
+    const handleFiles = async (fileList)=>{
+        // Filter out invalid file types
+        const validFiles = fileList.filter((file)=>{
+            if (!isValidFileType(file)) {
+                console.warn(`⚠️ Rejected file: ${file.name} (type: ${file.type})`);
+                alert(`Cannot upload "${file.name}"\n\nAllowed file types:\n• 3D Models (GLB)\n• Images (JPG, PNG, etc.)\n• Videos (MP4, MOV, etc.)\n• Documents (PDF, DOC, TXT)`);
+                return false;
+            }
+            if (file.size > 50 * 1024 * 1024) {
+                alert(`File "${file.name}" is too large (max 50MB)`);
+                return false;
+            }
+            return true;
+        });
+        if (validFiles.length === 0) return;
+        setUploading(true);
+        setUploadSuccess(false);
+        setUploadMessage('');
+        try {
+            const uploadedFiles = [];
+            for (const file of validFiles){
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('sceneId', sceneId);
+                formData.append('sceneName', sceneName);
+                const response = await fetch('/api/upload-evidence', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (!response.ok) {
+                    throw new Error(`Upload failed for ${file.name}`);
+                }
+                const result = await response.json();
+                uploadedFiles.push(result.file);
+            }
+            setFiles((prev)=>[
+                    ...prev,
+                    ...uploadedFiles
+                ]);
+            if (onFilesUploaded) {
+                onFilesUploaded(uploadedFiles);
+            }
+            // Show success message
+            setUploadSuccess(true);
+            const fileCount = uploadedFiles.length;
+            const hasGLB = uploadedFiles.some((f)=>f.name.toLowerCase().endsWith('.glb'));
+            const glbMessage = hasGLB ? ' Scene list will refresh automatically.' : '';
+            setUploadMessage(`✅ ${fileCount} file${fileCount > 1 ? 's' : ''} uploaded successfully!${glbMessage}`);
+            // Hide success message after 5 seconds
+            setTimeout(()=>{
+                setUploadSuccess(false);
+                setUploadMessage('');
+            }, 5000);
+        } catch (error) {
+            console.error('Upload error:', error);
+            setUploadSuccess(false);
+            setUploadMessage('❌ Upload failed. Please try again.');
+            // Hide error message after 5 seconds
+            setTimeout(()=>{
+                setUploadMessage('');
+            }, 5000);
+        } finally{
+            setUploading(false);
+        }
+    };
+    const removeFile = (id)=>{
+        setFiles((prev)=>prev.filter((f)=>f.id !== id));
+    };
+    const getFileIcon = (type, name)=>{
+        if (type.startsWith('image/')) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__["Image"], {
+            className: "w-4 h-4"
+        }, void 0, false, {
+            fileName: "[project]/components/evidence-uploader.tsx",
+            lineNumber: 155,
+            columnNumber: 43
+        }, this);
+        if (type.startsWith('video/')) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__File$3e$__["File"], {
+            className: "w-4 h-4"
+        }, void 0, false, {
+            fileName: "[project]/components/evidence-uploader.tsx",
+            lineNumber: 156,
+            columnNumber: 43
+        }, this);
+        if (type === 'model/gltf-binary' || name.toLowerCase().endsWith('.glb')) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
+            className: "w-4 h-4"
+        }, void 0, false, {
+            fileName: "[project]/components/evidence-uploader.tsx",
+            lineNumber: 157,
+            columnNumber: 85
+        }, this);
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"], {
+            className: "w-4 h-4"
+        }, void 0, false, {
+            fileName: "[project]/components/evidence-uploader.tsx",
+            lineNumber: 158,
+            columnNumber: 12
+        }, this);
+    };
+    const formatFileSize = (bytes)=>{
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
+        className: "p-6",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "space-y-4",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex items-center justify-between",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                            className: "text-lg font-semibold text-foreground",
+                            children: "Evidence Files"
+                        }, void 0, false, {
+                            fileName: "[project]/components/evidence-uploader.tsx",
+                            lineNumber: 171,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                            variant: "outline",
+                            children: [
+                                files.length,
+                                " file",
+                                files.length !== 1 ? 's' : ''
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/evidence-uploader.tsx",
+                            lineNumber: 172,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/evidence-uploader.tsx",
+                    lineNumber: 170,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: `relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${dragActive ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`,
+                    onDragEnter: handleDrag,
+                    onDragLeave: handleDrag,
+                    onDragOver: handleDrag,
+                    onDrop: handleDrop,
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                            type: "file",
+                            multiple: true,
+                            onChange: handleChange,
+                            className: "hidden",
+                            id: "file-upload",
+                            accept: "image/*,video/*,.pdf,.doc,.docx,.txt,.glb,model/gltf-binary"
+                        }, void 0, false, {
+                            fileName: "[project]/components/evidence-uploader.tsx",
+                            lineNumber: 187,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "space-y-3",
+                            children: uploading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
+                                        className: "w-10 h-10 mx-auto animate-spin text-primary"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                        lineNumber: 199,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-sm text-muted-foreground",
+                                        children: "Uploading evidence..."
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                        lineNumber: 200,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
+                                        className: "w-10 h-10 mx-auto text-muted-foreground"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                        lineNumber: 204,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-sm font-medium text-foreground",
+                                                children: [
+                                                    "Drag and drop files here, or",
+                                                    ' ',
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                        htmlFor: "file-upload",
+                                                        className: "text-primary cursor-pointer hover:underline",
+                                                        children: "browse"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                                        lineNumber: 208,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                lineNumber: 206,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-xs text-muted-foreground mt-1",
+                                                children: "3D models (GLB), images, videos, documents • Max 50MB per file"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                lineNumber: 212,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                        lineNumber: 205,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true)
+                        }, void 0, false, {
+                            fileName: "[project]/components/evidence-uploader.tsx",
+                            lineNumber: 196,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/evidence-uploader.tsx",
+                    lineNumber: 176,
+                    columnNumber: 9
+                }, this),
+                uploadMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: `p-3 rounded-md text-sm font-medium transition-all ${uploadSuccess ? 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20'}`,
+                    children: uploadMessage
+                }, void 0, false, {
+                    fileName: "[project]/components/evidence-uploader.tsx",
+                    lineNumber: 223,
+                    columnNumber: 11
+                }, this),
+                files.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "space-y-2",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-sm font-medium text-foreground",
+                            children: "Uploaded Evidence"
+                        }, void 0, false, {
+                            fileName: "[project]/components/evidence-uploader.tsx",
+                            lineNumber: 235,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ScrollArea"], {
+                            className: "h-[200px]",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-2",
+                                children: files.map((file)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-3 p-3 rounded-md border border-border bg-background/50 hover:bg-background transition-colors",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex-shrink-0 p-2 rounded-md bg-primary/10 text-primary",
+                                                children: getFileIcon(file.type, file.name)
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                lineNumber: 243,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex-1 min-w-0",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                className: "text-sm font-medium text-foreground truncate",
+                                                                children: file.name
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                                lineNumber: 249,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            file.name.toLowerCase().endsWith('.glb') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                                                                variant: "outline",
+                                                                className: "text-xs",
+                                                                children: "3D Model"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                                lineNumber: 253,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                                        lineNumber: 248,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs text-muted-foreground",
+                                                        children: [
+                                                            formatFileSize(file.size),
+                                                            " • ",
+                                                            new Date(file.uploadedAt).toLocaleTimeString()
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                                        lineNumber: 256,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                lineNumber: 247,
+                                                columnNumber: 21
+                                            }, this),
+                                            file.type.startsWith('image/') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                href: file.url,
+                                                target: "_blank",
+                                                rel: "noopener noreferrer",
+                                                className: "flex-shrink-0",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                    src: file.url,
+                                                    alt: file.name,
+                                                    className: "w-12 h-12 object-cover rounded border border-border"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/evidence-uploader.tsx",
+                                                    lineNumber: 268,
+                                                    columnNumber: 25
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                lineNumber: 262,
+                                                columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                                                variant: "ghost",
+                                                size: "sm",
+                                                onClick: ()=>removeFile(file.id),
+                                                className: "flex-shrink-0",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
+                                                    className: "w-4 h-4"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/evidence-uploader.tsx",
+                                                    lineNumber: 282,
+                                                    columnNumber: 23
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/evidence-uploader.tsx",
+                                                lineNumber: 276,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, file.id, true, {
+                                        fileName: "[project]/components/evidence-uploader.tsx",
+                                        lineNumber: 239,
+                                        columnNumber: 19
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/components/evidence-uploader.tsx",
+                                lineNumber: 237,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/components/evidence-uploader.tsx",
+                            lineNumber: 236,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/evidence-uploader.tsx",
+                    lineNumber: 234,
+                    columnNumber: 11
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/components/evidence-uploader.tsx",
+            lineNumber: 169,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/components/evidence-uploader.tsx",
+        lineNumber: 168,
+        columnNumber: 5
+    }, this);
+}
+}),
 "[project]/app/scene/page.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -1650,7 +2208,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$case$2d$select
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$case$2d$details$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/case-details.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$notes$2d$editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/notes-editor.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$evidence$2d$detector$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/evidence-detector.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$evidence$2d$uploader$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/evidence-uploader.tsx [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -1678,62 +2238,80 @@ function ScenePage() {
     const [evidence, setEvidence] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [showEvidenceMarkers, setShowEvidenceMarkers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const modelViewerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
-    // Fetch scenes from API that scans folder structure
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const fetchScenes = async ()=>{
-            try {
-                const response = await fetch('/api/scenes');
-                const data = await response.json();
-                if (data.scenes) {
-                    setAvailableScenes(data.scenes);
-                    // Set first parent scene as default
+    // Function to fetch scenes from API
+    const fetchScenes = async (isRefresh = false)=>{
+        try {
+            console.log(`${isRefresh ? '🔄 Refreshing' : '📥 Loading'} scenes from API...`);
+            const response = await fetch('/api/scenes?t=' + Date.now()) // Add cache buster
+            ;
+            const data = await response.json();
+            if (data.scenes) {
+                console.log(`✅ Fetched ${data.scenes.length} scenes`);
+                const childScenes = data.scenes.filter((s)=>s.parentId !== null || s.parentIds && s.parentIds.length > 0);
+                console.log(`  - ${childScenes.length} child scenes found`);
+                setAvailableScenes(data.scenes);
+                // Set first parent scene as default (only on initial load)
+                if (!isRefresh) {
                     const firstParent = data.scenes.find((s)=>s.parentId === null);
                     if (firstParent) {
                         setSelectedCaseId(firstParent.id);
                     }
                 }
-            } catch (error) {
-                console.error('Failed to fetch scenes:', error);
-            } finally{
+            }
+        } catch (error) {
+            console.error('Failed to fetch scenes:', error);
+        } finally{
+            if (!isRefresh) {
                 setLoading(false);
                 setMounted(true);
             }
-        };
+        }
+    };
+    // Fetch scenes from API that scans folder structure
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         fetchScenes();
     }, []);
     // Transform scenes into cases format with children whenever availableScenes changes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if (availableScenes.length === 0) return;
+        console.log('🔄 Transforming scenes into cases format...');
         const casesData = availableScenes.map((scene)=>{
             // Determine if this scene is a child (has parentIds array or parentId set)
             const hasParentIds = Array.isArray(scene.parentIds) && scene.parentIds.length > 0;
             const hasParentId = scene.parentId !== null && scene.parentId !== undefined;
             const isChild = hasParentIds || hasParentId;
+            const children = availableScenes.filter((s)=>{
+                // Check if scene has parentIds array and includes this scene's id
+                if (Array.isArray(s.parentIds)) {
+                    return s.parentIds.includes(scene.id);
+                }
+                // Fallback to old parentId check for backward compatibility
+                return s.parentId === scene.id;
+            }).map((child)=>({
+                    id: child.id,
+                    name: child.name,
+                    description: child.description,
+                    modelUrl: buildModelUrl(child, scene),
+                    folder: child.folder || scene.folder,
+                    notes: ""
+                }));
+            if (children.length > 0) {
+                console.log(`  - ${scene.name}: ${children.length} children (${children.map((c)=>c.name).join(', ')})`);
+            }
             return {
                 id: scene.id,
                 name: scene.name,
                 description: scene.description,
                 modelUrl: buildModelUrl(scene),
+                folder: scene.folder,
                 notes: "",
                 // Set parentId to a non-null value for child scenes so they get filtered out of parent dropdown
                 parentId: isChild ? scene.parentIds?.[0] || scene.parentId || -1 : null,
-                children: availableScenes.filter((s)=>{
-                    // Check if scene has parentIds array and includes this scene's id
-                    if (Array.isArray(s.parentIds)) {
-                        return s.parentIds.includes(scene.id);
-                    }
-                    // Fallback to old parentId check for backward compatibility
-                    return s.parentId === scene.id;
-                }).map((child)=>({
-                        id: child.id,
-                        name: child.name,
-                        description: child.description,
-                        modelUrl: buildModelUrl(child, scene),
-                        notes: ""
-                    }))
+                children
             };
         });
         setCases(casesData);
+        console.log(`✅ Cases transformed: ${casesData.length} total cases`);
     }, [
         availableScenes
     ]);
@@ -1771,12 +2349,12 @@ function ScenePage() {
                 children: "Loading scenes..."
             }, void 0, false, {
                 fileName: "[project]/app/scene/page.tsx",
-                lineNumber: 132,
+                lineNumber: 152,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/scene/page.tsx",
-            lineNumber: 131,
+            lineNumber: 151,
             columnNumber: 7
         }, this);
     }
@@ -1817,6 +2395,14 @@ function ScenePage() {
     const getScreenshot = ()=>{
         return modelViewerRef.current?.captureScreenshot() || null;
     };
+    // Determine upload folder (use parent's folder for child scenes)
+    const uploadFolder = selectedChildId ? availableScenes.find((s)=>s.id === selectedCaseId)?.folder || String(selectedCaseId) : selectedCase?.folder || String(selectedCaseId);
+    console.log('📁 Upload folder:', uploadFolder, {
+        selectedCaseId,
+        selectedChildId,
+        parentSceneFolder: availableScenes.find((s)=>s.id === selectedCaseId)?.folder,
+        selectedCaseFolder: selectedCase?.folder
+    });
     const currentNotes = selectedChild ? selectedChild.notes : selectedCase.notes;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: `min-h-screen bg-background p-4 md:p-8 lg:p-12 transition-all duration-700 ${mounted ? 'opacity-100' : 'opacity-0'}`,
@@ -1836,14 +2422,14 @@ function ScenePage() {
                                 onSelectChild: setSelectedChildId
                             }, void 0, false, {
                                 fileName: "[project]/app/scene/page.tsx",
-                                lineNumber: 187,
+                                lineNumber: 219,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$case$2d$details$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CaseDetails"], {
                                 description: displayCase.description
                             }, void 0, false, {
                                 fileName: "[project]/app/scene/page.tsx",
-                                lineNumber: 194,
+                                lineNumber: 226,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$evidence$2d$detector$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EvidenceDetector"], {
@@ -1856,13 +2442,35 @@ function ScenePage() {
                                 getScreenshot: getScreenshot
                             }, void 0, false, {
                                 fileName: "[project]/app/scene/page.tsx",
-                                lineNumber: 195,
+                                lineNumber: 227,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$evidence$2d$uploader$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EvidenceUploader"], {
+                                sceneId: uploadFolder,
+                                sceneName: displayCase.name,
+                                onFilesUploaded: (files)=>{
+                                    console.log(`✅ Files uploaded to folder: ${uploadFolder}`, files);
+                                    // Refresh scenes list to show newly uploaded GLB files in child list
+                                    const hasGLB = files.some((f)=>f.name.toLowerCase().endsWith('.glb'));
+                                    if (hasGLB) {
+                                        console.log('🔄 Refreshing scenes list to include new GLB files...');
+                                        // Add small delay to ensure file system has written the file
+                                        setTimeout(()=>{
+                                            fetchScenes(true).then(()=>{
+                                                console.log('✅ Scenes list refreshed!');
+                                            });
+                                        }, 500);
+                                    }
+                                }
+                            }, void 0, false, {
+                                fileName: "[project]/app/scene/page.tsx",
+                                lineNumber: 236,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/scene/page.tsx",
-                        lineNumber: 186,
+                        lineNumber: 218,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1875,7 +2483,7 @@ function ScenePage() {
                                 showEvidenceMarkers: showEvidenceMarkers
                             }, void 0, false, {
                                 fileName: "[project]/app/scene/page.tsx",
-                                lineNumber: 208,
+                                lineNumber: 258,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$notes$2d$editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NotesEditor"], {
@@ -1883,33 +2491,33 @@ function ScenePage() {
                                 onNotesChange: handleNotesUpdate
                             }, void 0, false, {
                                 fileName: "[project]/app/scene/page.tsx",
-                                lineNumber: 214,
+                                lineNumber: 264,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/scene/page.tsx",
-                        lineNumber: 207,
+                        lineNumber: 257,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/scene/page.tsx",
-                lineNumber: 184,
+                lineNumber: 216,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/scene/page.tsx",
-            lineNumber: 183,
+            lineNumber: 215,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/scene/page.tsx",
-        lineNumber: 182,
+        lineNumber: 214,
         columnNumber: 5
     }, this);
 }
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__12f61b07._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__496c1999._.js.map

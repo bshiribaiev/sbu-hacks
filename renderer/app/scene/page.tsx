@@ -6,6 +6,7 @@ import { CaseSelector } from "@/components/case-selector"
 import { CaseDetails } from "@/components/case-details"
 import { NotesEditor } from "@/components/notes-editor"
 import { EvidenceDetector, EvidencePoint } from "@/components/evidence-detector"
+import { EvidenceUploader } from "@/components/evidence-uploader"
 
 interface Scene {
   id: number
@@ -39,27 +40,37 @@ export default function ScenePage() {
   const [showEvidenceMarkers, setShowEvidenceMarkers] = useState(false)
   const modelViewerRef = useRef<ModelViewerRef>(null)
 
-  // Fetch scenes from API that scans folder structure
-  useEffect(() => {
-    const fetchScenes = async () => {
-      try {
-        const response = await fetch('/api/scenes')
-        const data = await response.json()
-        if (data.scenes) {
-          setAvailableScenes(data.scenes)
-          // Set first parent scene as default
+  // Function to fetch scenes from API
+  const fetchScenes = async (isRefresh = false) => {
+    try {
+      console.log(`${isRefresh ? '🔄 Refreshing' : '📥 Loading'} scenes from API...`)
+      const response = await fetch('/api/scenes?t=' + Date.now()) // Add cache buster
+      const data = await response.json()
+      if (data.scenes) {
+        console.log(`✅ Fetched ${data.scenes.length} scenes`)
+        const childScenes = data.scenes.filter((s: Scene) => s.parentId !== null || (s.parentIds && s.parentIds.length > 0))
+        console.log(`  - ${childScenes.length} child scenes found`)
+        setAvailableScenes(data.scenes)
+        // Set first parent scene as default (only on initial load)
+        if (!isRefresh) {
           const firstParent = data.scenes.find((s: Scene) => s.parentId === null)
           if (firstParent) {
             setSelectedCaseId(firstParent.id)
           }
         }
-      } catch (error) {
-        console.error('Failed to fetch scenes:', error)
-      } finally {
+      }
+    } catch (error) {
+      console.error('Failed to fetch scenes:', error)
+    } finally {
+      if (!isRefresh) {
         setLoading(false)
         setMounted(true)
       }
     }
+  }
+
+  // Fetch scenes from API that scans folder structure
+  useEffect(() => {
     fetchScenes()
   }, [])
 
@@ -67,40 +78,50 @@ export default function ScenePage() {
   useEffect(() => {
     if (availableScenes.length === 0) return
 
+    console.log('🔄 Transforming scenes into cases format...')
     const casesData = availableScenes.map((scene) => {
       // Determine if this scene is a child (has parentIds array or parentId set)
       const hasParentIds = Array.isArray(scene.parentIds) && scene.parentIds.length > 0
       const hasParentId = scene.parentId !== null && scene.parentId !== undefined
       const isChild = hasParentIds || hasParentId
       
+      const children = availableScenes
+        .filter((s) => {
+          // Check if scene has parentIds array and includes this scene's id
+          if (Array.isArray(s.parentIds)) {
+            return s.parentIds.includes(scene.id)
+          }
+          // Fallback to old parentId check for backward compatibility
+          return s.parentId === scene.id
+        })
+        .map((child) => ({
+          id: child.id,
+          name: child.name,
+          description: child.description,
+          modelUrl: buildModelUrl(child, scene), // Pass parent scene to use correct folder
+          folder: child.folder || scene.folder, // Use child's folder or inherit from parent
+          notes: "",
+        }))
+      
+      if (children.length > 0) {
+        console.log(`  - ${scene.name}: ${children.length} children (${children.map(c => c.name).join(', ')})`)
+      }
+      
       return {
         id: scene.id,
         name: scene.name,
         description: scene.description,
         modelUrl: buildModelUrl(scene),
+        folder: scene.folder, // Preserve folder for file uploads
         notes: "",
         // Set parentId to a non-null value for child scenes so they get filtered out of parent dropdown
         parentId: isChild ? (scene.parentIds?.[0] || scene.parentId || -1) : null,
-        children: availableScenes
-          .filter((s) => {
-            // Check if scene has parentIds array and includes this scene's id
-            if (Array.isArray(s.parentIds)) {
-              return s.parentIds.includes(scene.id)
-            }
-            // Fallback to old parentId check for backward compatibility
-            return s.parentId === scene.id
-          })
-          .map((child) => ({
-            id: child.id,
-            name: child.name,
-            description: child.description,
-            modelUrl: buildModelUrl(child, scene), // Pass parent scene to use correct folder
-            notes: "",
-          })),
+        children,
       }
     })
     
     setCases(casesData)
+    console.log(`✅ Cases transformed: ${casesData.length} total cases`)
   }, [availableScenes])
 
   // Reset child selection when parent changes
@@ -175,6 +196,18 @@ export default function ScenePage() {
     return modelViewerRef.current?.captureScreenshot() || null
   }
 
+  // Determine upload folder (use parent's folder for child scenes)
+  const uploadFolder = selectedChildId 
+    ? (availableScenes.find((s) => s.id === selectedCaseId)?.folder || String(selectedCaseId))
+    : (selectedCase?.folder || String(selectedCaseId))
+  
+  console.log('📁 Upload folder:', uploadFolder, {
+    selectedCaseId,
+    selectedChildId,
+    parentSceneFolder: availableScenes.find((s) => s.id === selectedCaseId)?.folder,
+    selectedCaseFolder: selectedCase?.folder
+  })
+
   const currentNotes = selectedChild ? selectedChild.notes : selectedCase.notes
 
   return (
@@ -199,6 +232,24 @@ export default function ScenePage() {
               showMarkers={showEvidenceMarkers}
               onToggleMarkers={() => setShowEvidenceMarkers(!showEvidenceMarkers)}
               getScreenshot={getScreenshot}
+            />
+            <EvidenceUploader
+              sceneId={uploadFolder}
+              sceneName={displayCase.name}
+              onFilesUploaded={(files) => {
+                console.log(`✅ Files uploaded to folder: ${uploadFolder}`, files)
+                // Refresh scenes list to show newly uploaded GLB files in child list
+                const hasGLB = files.some(f => f.name.toLowerCase().endsWith('.glb'))
+                if (hasGLB) {
+                  console.log('🔄 Refreshing scenes list to include new GLB files...')
+                  // Add small delay to ensure file system has written the file
+                  setTimeout(() => {
+                    fetchScenes(true).then(() => {
+                      console.log('✅ Scenes list refreshed!')
+                    })
+                  }, 500)
+                }
+              }}
             />
           </div>
 

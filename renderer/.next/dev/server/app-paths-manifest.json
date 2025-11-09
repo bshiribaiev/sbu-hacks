@@ -1,6 +1,7 @@
 {
   "/api/analyze-evidence/route": "app/api/analyze-evidence/route.js",
   "/api/scenes/route": "app/api/scenes/route.js",
+  "/api/upload-evidence/route": "app/api/upload-evidence/route.js",
   "/page": "app/page.js",
   "/scene/page": "app/scene/page.js"
 }

@@ -27,6 +27,53 @@ export async function POST(request: Request) {
       isValidApiKey: hasValidApiKey
     })
 
+    // 🚀 DEMO MODE: Hardcoded evidence for Room scene ONLY (for presentation/testing)
+    const isDemoMode = sceneName.toLowerCase() === 'room'
+    if (isDemoMode) {
+      console.log('🎯 DEMO MODE: Using hardcoded evidence points for "Room" scene')
+      const demoEvidence: EvidencePoint[] = [
+        {
+          id: 'demo-1',
+          label: 'Deceased Individual',
+          description: 'Primary victim lying in the center-left area of the room. Critical evidence for determining cause and time of incident.',
+          position: [-1.8, 0.2, 0.5], // Far left side, floor level, mid-depth
+          category: 'evidence',
+          confidence: 0.95
+        },
+        {
+          id: 'demo-2',
+          label: 'Bottle (Below TV)',
+          description: 'Bottle located below television set on left side. May contain substances relevant to the investigation - priority for lab analysis.',
+          position: [-2.2, 0.3, -1.5], // Extreme left side, low height, back wall (below TV)
+          category: 'evidence',
+          confidence: 0.90
+        },
+        {
+          id: 'demo-3',
+          label: 'Grey Sofa',
+          description: 'Large furniture piece on the right side. Check for trace evidence, blood spatter, and positioning relative to victim.',
+          position: [-0.5, 0.6, 0.2], // Left of center, furniture height, mid-depth
+          category: 'furniture',
+          confidence: 0.88
+        },
+        {
+          id: 'demo-4',
+          label: 'Wall Opening/Damage',
+          description: 'Damaged section of wall at the back. Possible entry/exit point or structural damage related to incident.',
+          position: [0.3, 1.6, -2.0], // Center-right, high up, far back wall
+          category: 'anomaly',
+          confidence: 0.82
+        }
+      ]
+      
+      console.log('✅ Returning demo evidence:', demoEvidence.length, 'points')
+      demoEvidence.forEach((point, i) => {
+        console.log(`  ${i+1}. ${point.label} at [${point.position.map(p => p.toFixed(2)).join(', ')}]`)
+      })
+      
+      return NextResponse.json({ evidence: demoEvidence, source: 'demo' })
+    }
+
     // 🚀 HACKATHON PRIORITY: If screenshot provided, use Gemini Vision (BEST - actually sees the scene)
     let evidencePoints: EvidencePoint[] = []
     let source = 'mock'
@@ -120,8 +167,8 @@ async function analyzeWithGemini(
     // Try gemini-1.5-flash first as it's more available
     let model
     try {
-      model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' })
-      console.log('Using Gemini model: gemini-2.5-pro')
+      model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+      console.log('Using Gemini model: gemini-2.5-flash')
     } catch (err) {
       model = genAI.getGenerativeModel({ model: 'gemini-2.5-flahs' })
       console.log('Using Gemini model: gemini-pro')
@@ -145,7 +192,7 @@ Scene Name: "${sceneName}"
 Description: "${sceneDescription}"
 ${modelMetadata ? `\n3D MODEL STRUCTURE:\n${modelMetadata}` : ''}
 
-TASK: Identify 5-8 important points of interest in this scene based on the description and objects present.
+TASK: Identify 3-4 important points of interest in this scene based on the description and objects present.
 
 For each point, provide:
 - label: A clear name (e.g., "Key Object Location", "Area of Interest", "Furniture Position")
@@ -258,45 +305,53 @@ async function analyzeWithGeminiVision(
     const genAI = new GoogleGenerativeAI(apiKey)
     
     // Use gemini-pro which supports multimodal (image + text) in current SDK
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' })
-    console.log('Using Gemini model for vision: gemini-2.5-pro')
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+    console.log('Using Gemini model for vision: gemini-2.5-flash')
     
     // Remove data URL prefix if present (data:image/png;base64,)
     const base64Data = screenshot.replace(/^data:image\/\w+;base64,/, '')
     
-    const prompt = `You are analyzing a 3D crime scene reconstruction IMAGE.
+    const prompt = `You are analyzing a 3D crime scene reconstruction IMAGE from an AERIAL/ANGLED camera view.
 
 SCENE: ${sceneName}
 DESCRIPTION: ${sceneDescription}
 
-Look carefully at this 3D scene and identify ALL visible evidence items, objects, and points of interest.
+CRITICAL TASK: Identify ONLY the 4-5 MOST IMPORTANT evidence items you can clearly see.
+Focus on the most obvious, significant objects - NOT every small detail.
 
-For EACH item you can see, estimate its 3D position where:
-- X axis: left (-3) to right (+3), with 0 in the center
-- Y axis: floor (0) to ceiling (3)
-- Z axis: back of room (-3) to front (3)
+3D COORDINATE SYSTEM (looking down at room from above/angle):
+- X axis: LEFT edge of image = -2, CENTER = 0, RIGHT edge = +2
+- Y axis: Floor/ground level = 0.3, Waist height = 0.8, Standing height = 1.7
+- Z axis: TOP of image (far away) = -2, BOTTOM of image (close to camera) = +2
 
-Return a JSON array of 6-10 items you can actually SEE in the image:
+POSITIONING GUIDE:
+- Objects HIGHER in the image → more NEGATIVE Z (farther away, like -1.5)
+- Objects LOWER in the image → more POSITIVE Z (closer, like +1.5)
+- Use the center of each object for position
+- Most furniture sits at Y = 0.5 to 0.8
 
+PRIORITY ORDER (pick 4-5):
+1. Bodies/people (HIGHEST priority - "evidence")
+2. Weapons or suspicious objects ("evidence")
+3. Large furniture pieces that frame the scene ("furniture")
+4. Notable anomalies like doors, windows, damage ("anomaly")
+
+Return JSON array with ONLY 4-5 items:
 [
   {
-    "label": "Item Name",
-    "description": "What makes this forensically significant (2 sentences max)",
+    "label": "Specific descriptive name",
+    "description": "Why this is important evidence (1-2 sentences)",
     "position": [x, y, z],
-    "category": "evidence" or "furniture" or "object" or "anomaly",
-    "confidence": 0.6-0.95
+    "category": "evidence" | "furniture" | "anomaly" | "object",
+    "confidence": 0.7-0.95
   }
 ]
 
-IMPORTANT:
-- Only identify items you can ACTUALLY SEE in the image
-- Use realistic position estimates based on where they appear visually
-- Bodies, weapons, blood = "evidence"
-- Chairs, tables, beds = "furniture"
-- Entry/exit points = "anomaly"
-- Other items = "object"
-
-Return ONLY the JSON array, no markdown, no explanations.`
+RULES:
+- ONLY include items you can CLEARLY see
+- Focus on LARGE, OBVIOUS objects (not small details)
+- Use CAREFUL position estimates - think about image top=far, bottom=near
+- Return ONLY valid JSON, no markdown, no extra text`
 
     console.log('Sending screenshot to Gemini Vision (size:', base64Data.length, 'chars)')
     
@@ -338,7 +393,7 @@ Return ONLY the JSON array, no markdown, no explanations.`
       const parsed = JSON.parse(cleanedText)
       
       if (Array.isArray(parsed)) {
-        const evidencePoints: EvidencePoint[] = parsed.map((item, index) => ({
+        let evidencePoints: EvidencePoint[] = parsed.map((item, index) => ({
           id: `vision-${index + 1}`,
           label: item.label || 'Unknown',
           description: item.description || '',
@@ -351,9 +406,17 @@ Return ONLY the JSON array, no markdown, no explanations.`
           confidence: typeof item.confidence === 'number' ? Math.max(0, Math.min(1, item.confidence)) : 0.75,
         }))
         
-        console.log(`✅ Parsed ${evidencePoints.length} evidence points from Vision AI`)
+        // Filter: Only keep high-confidence items (>= 0.7)
+        evidencePoints = evidencePoints.filter(point => point.confidence >= 0.7)
+        
+        // Sort by confidence (highest first) and limit to top 5
+        evidencePoints = evidencePoints
+          .sort((a, b) => b.confidence - a.confidence)
+          .slice(0, 5)
+        
+        console.log(`✅ Parsed ${evidencePoints.length} high-confidence evidence points from Vision AI`)
         evidencePoints.forEach((point, i) => {
-          console.log(`  Vision Point ${i}: ${point.label} at [${point.position.map(p => p.toFixed(2)).join(', ')}]`)
+          console.log(`  ${i+1}. ${point.label} at [${point.position.map(p => p.toFixed(2)).join(', ')}] (confidence: ${(point.confidence * 100).toFixed(0)}%)`)
         })
         
         return evidencePoints
@@ -886,4 +949,3 @@ function generateEvidencePoints(sceneName: string, description: string): Evidenc
   console.log('Final evidence points:', finalPoints.length)
   return finalPoints
 }
-
