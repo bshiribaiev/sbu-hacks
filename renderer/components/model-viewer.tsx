@@ -1,8 +1,11 @@
 "use client"
 
-import { Suspense, useState } from "react"
-import { Canvas } from "@react-three/fiber"
+import { Suspense, useState, useRef, useImperativeHandle, forwardRef, useEffect } from "react"
+import { Canvas, useThree } from "@react-three/fiber"
 import { OrbitControls, PerspectiveCamera, Environment, useGLTF, Box } from "@react-three/drei"
+import { EvidenceMarkers } from "./evidence-markers"
+import { EvidencePoint } from "./evidence-detector"
+import * as THREE from "three"
 
 interface ModelProps {
   url: string
@@ -24,6 +27,38 @@ function Model({ url }: ModelProps) {
   return <primitive object={scene} scale={1} />
 }
 
+export interface ModelViewerRef {
+  captureScreenshot: () => string | null
+}
+
+interface ModelViewerProps {
+  modelUrl: string
+  evidence?: EvidencePoint[]
+  showEvidenceMarkers?: boolean
+}
+
+// Component to handle screenshot capture from inside Canvas
+function ScreenshotCapture({ onCaptureRef }: { onCaptureRef: (capture: () => string | null) => void }) {
+  const { gl, scene, camera } = useThree()
+  
+  useEffect(() => {
+    const captureFunc = () => {
+      try {
+        // Ensure scene is rendered
+        gl.render(scene, camera)
+        // Capture as data URL
+        return gl.domElement.toDataURL('image/png')
+      } catch (error) {
+        console.error('Screenshot capture failed:', error)
+        return null
+      }
+    }
+    onCaptureRef(captureFunc)
+  }, [gl, scene, camera, onCaptureRef])
+  
+  return null
+}
+
 function PlaceholderModel() {
   return (
     <group>
@@ -43,33 +78,44 @@ function PlaceholderModel() {
   )
 }
 
-interface ModelViewerProps {
-  modelUrl: string
-}
+export const ModelViewer = forwardRef<ModelViewerRef, ModelViewerProps>(
+  ({ modelUrl, evidence = [], showEvidenceMarkers = false }, ref) => {
+    const [hasError, setHasError] = useState(false)
+    const captureFuncRef = useRef<(() => string | null) | null>(null)
 
-export function ModelViewer({ modelUrl }: ModelViewerProps) {
-  const [hasError, setHasError] = useState(false)
+    useImperativeHandle(ref, () => ({
+      captureScreenshot: () => {
+        if (captureFuncRef.current) {
+          console.log('📸 Capturing screenshot...')
+          return captureFuncRef.current()
+        }
+        console.warn('⚠️ Screenshot capture function not ready')
+        return null
+      }
+    }))
 
-  return (
-    <div className="relative aspect-[16/10] w-full border border-border bg-card rounded-sm overflow-hidden hover:border-primary/30 transition-colors">
-      <Canvas key={modelUrl} className="bg-gradient-to-br from-background via-card to-background">
-        <PerspectiveCamera makeDefault position={[0, 1.5, 3]} fov={50} />
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[10, 10, 5]} intensity={1.5} />
-        <directionalLight position={[-10, 5, -5]} intensity={0.5} />
-        <Environment preset="sunset" />
-        <Suspense fallback={<PlaceholderModel />}>
-          {hasError ? <PlaceholderModel /> : <Model url={modelUrl} />}
-        </Suspense>
-        <OrbitControls
-          enablePan={true}
-          enableZoom={true}
-          enableRotate={true}
-          minDistance={1}
-          maxDistance={20}
-          makeDefault
-        />
-      </Canvas>
+    return (
+      <div className="relative aspect-[16/10] w-full border border-border bg-card rounded-sm overflow-hidden hover:border-primary/30 transition-colors">
+        <Canvas key={modelUrl} className="bg-gradient-to-br from-background via-card to-background">
+          <PerspectiveCamera makeDefault position={[0, 1.5, 3]} fov={50} />
+          <ambientLight intensity={0.8} />
+          <directionalLight position={[10, 10, 5]} intensity={1.5} />
+          <directionalLight position={[-10, 5, -5]} intensity={0.5} />
+          <Environment preset="sunset" />
+          <Suspense fallback={<PlaceholderModel />}>
+            {hasError ? <PlaceholderModel /> : <Model url={modelUrl} />}
+          </Suspense>
+          <EvidenceMarkers evidence={evidence} visible={showEvidenceMarkers} />
+          <ScreenshotCapture onCaptureRef={(func) => { captureFuncRef.current = func }} />
+          <OrbitControls
+            enablePan={true}
+            enableZoom={true}
+            enableRotate={true}
+            minDistance={1}
+            maxDistance={20}
+            makeDefault
+          />
+        </Canvas>
       <div className="absolute bottom-4 right-4 flex gap-3 text-xs text-muted-foreground bg-background/90 backdrop-blur-sm px-4 py-2 rounded border border-border">
         <span className="flex items-center gap-1">
           <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
@@ -86,6 +132,9 @@ export function ModelViewer({ modelUrl }: ModelViewerProps) {
           Right-click: Pan
         </span>
       </div>
-    </div>
-  )
-}
+      </div>
+    )
+  }
+)
+
+ModelViewer.displayName = 'ModelViewer'

@@ -1,10 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { ModelViewer } from "@/components/model-viewer"
+import { useState, useEffect, useRef } from "react"
+import { ModelViewer, ModelViewerRef } from "@/components/model-viewer"
 import { CaseSelector } from "@/components/case-selector"
 import { CaseDetails } from "@/components/case-details"
 import { NotesEditor } from "@/components/notes-editor"
+import { EvidenceDetector, EvidencePoint } from "@/components/evidence-detector"
 
 interface Scene {
   id: number
@@ -34,6 +35,9 @@ export default function ScenePage() {
   const [cases, setCases] = useState<any[]>([])
   const [mounted, setMounted] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [evidence, setEvidence] = useState<EvidencePoint[]>([])
+  const [showEvidenceMarkers, setShowEvidenceMarkers] = useState(false)
+  const modelViewerRef = useRef<ModelViewerRef>(null)
 
   // Fetch scenes from API that scans folder structure
   useEffect(() => {
@@ -114,6 +118,12 @@ export default function ScenePage() {
     }
   }, [selectedCaseId, cases, selectedChildId])
 
+  // Reset evidence when scene changes
+  useEffect(() => {
+    setEvidence([])
+    setShowEvidenceMarkers(false)
+  }, [selectedCaseId, selectedChildId])
+
   // All hooks must be called before any conditional returns
   if (loading || cases.length === 0) {
     return (
@@ -127,15 +137,20 @@ export default function ScenePage() {
   const selectedChild = selectedChildId ? selectedCase.children?.find((c) => c.id === selectedChildId) : null
   
   // Build display case with correct URL based on parent
-  const displayCase = selectedChild 
-    ? {
+  let displayCase = selectedCase
+  if (selectedChild) {
+    const childScene = availableScenes.find((s) => s.id === selectedChildId)
+    const parentScene = availableScenes.find((s) => s.id === selectedCaseId)
+    
+    if (childScene && parentScene) {
+      displayCase = {
         ...selectedChild,
-        modelUrl: buildModelUrl(
-          availableScenes.find((s) => s.id === selectedChildId)!,
-          availableScenes.find((s) => s.id === selectedCaseId)!
-        )
+        modelUrl: buildModelUrl(childScene, parentScene)
       }
-    : selectedCase
+    } else {
+      displayCase = selectedChild
+    }
+  }
 
   const handleNotesUpdate = (notes: string) => {
     if (selectedChildId) {
@@ -156,6 +171,10 @@ export default function ScenePage() {
     }
   }
 
+  const getScreenshot = () => {
+    return modelViewerRef.current?.captureScreenshot() || null
+  }
+
   const currentNotes = selectedChild ? selectedChild.notes : selectedCase.notes
 
   return (
@@ -172,11 +191,25 @@ export default function ScenePage() {
               onSelectChild={setSelectedChildId}
             />
             <CaseDetails description={displayCase.description} />
+            <EvidenceDetector
+              sceneName={displayCase.name}
+              sceneDescription={displayCase.description}
+              modelUrl={displayCase.modelUrl}
+              onEvidenceDetected={setEvidence}
+              showMarkers={showEvidenceMarkers}
+              onToggleMarkers={() => setShowEvidenceMarkers(!showEvidenceMarkers)}
+              getScreenshot={getScreenshot}
+            />
           </div>
 
           {/* Right Column - 3D Viewer and Notes */}
           <div className="flex flex-col gap-6 lg:gap-8">
-            <ModelViewer modelUrl={displayCase.modelUrl} />
+            <ModelViewer
+              ref={modelViewerRef}
+              modelUrl={displayCase.modelUrl}
+              evidence={evidence}
+              showEvidenceMarkers={showEvidenceMarkers}
+            />
             <NotesEditor notes={currentNotes} onNotesChange={handleNotesUpdate} />
           </div>
         </div>
