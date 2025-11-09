@@ -2,6 +2,10 @@
 
 An interactive app that lets investigators explore 3D scene reconstructions and automatically detect points of interest using AI.
 
+Demo: https://youtu.be/xsx_s4PhBXU
+
+![Walkthrough](./walkthrough.gif)
+
 ## Inspiration
 
 Investigators spend hours combing through 3D reconstructions and photos to find likely evidence. That process is slow, manual, and error‑prone. We built SceneSplat at SBU Hacks 2025 to turn 3D scenes into actionable insights in minutes by combining AI detection with an immersive, collaborative 3D viewer.
@@ -15,10 +19,6 @@ Investigators spend hours combing through 3D reconstructions and photos to find 
   - Vision analysis by sending a screenshot of the current 3D view to Gemini
 - Case management: Parent/child scenes, details panel, and notes per scene.
 - Uploads: Add new GLB or supporting files per scene.
-
-Demo: https://youtu.be/xsx_s4PhBXU
-
-![Walkthrough](./walkthrough.gif)
 
 ## How we built it
 
