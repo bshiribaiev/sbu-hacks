@@ -1,6 +1,17 @@
-## SBU Hacks 2025, SceneSplat - 3D Scene Evidence Analyzer
+## SceneSplat - 3D Scene Evidence Analyzer
 
 An interactive app that lets investigators explore 3D scene reconstructions and automatically detect points of interest using AI. Users can load scenes, analyze them for evidence, view markers in 3D, and take notes per case.
+
+### Team
+
+- Bekbol
+- Amir
+- Ibrahim
+- Atai
+
+### Event
+
+SBU Hacks 2025
 
 ### What it does
 
@@ -19,44 +30,3 @@ An interactive app that lets investigators explore 3D scene reconstructions and 
 - **AI**: Google Gemini (`@google/generative-ai`)
 - **Runtime**: Node 20+
 
-### Project layout
-
-- Root repo contains docs/config; the Next.js app lives in `renderer/`
-- Public assets: `renderer/public/models/` and `renderer/public/uploads/`
-- API routes: `renderer/app/api/*`
-
-### Getting started (local)
-
-1. Install deps
-   ```bash
-   cd renderer
-   npm install
-   ```
-2. Create env
-   ```bash
-   # renderer/.env.local
-   GEMINI_API_KEY=your_key_here
-   ```
-3. Run
-   ```bash
-   npm run dev
-   ```
-4. Open `http://localhost:3000`
-
-### Deployment notes
-
-- The app can be deployed to any Node host. For Vercel:
-  - Set the project Root Directory to `renderer`
-  - Add `GEMINI_API_KEY` as an environment variable
-  - If you need persistent uploads, use a blob/object store (e.g., Vercel Blob or S3) instead of writing to `public/` at runtime
-
-### Team
-
-- Bekbol
-- Amir
-- Ibrahim
-- Atai
-
-### Event
-
-SBU Hacks 2025
