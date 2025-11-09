@@ -58,3 +58,6 @@ Thumbs.db
 # Large GLB files (if you don't want to commit them)
 # Uncomment the line below if you want to ignore GLB files
 # *.glb
+
+# Uploaded evidence files
+renderer/public/uploads/
