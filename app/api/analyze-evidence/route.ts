@@ -163,8 +163,6 @@ async function analyzeWithGemini(
   try {
     const genAI = new GoogleGenerativeAI(apiKey)
     
-    // Use gemini-1.5-flash (more reliable) or gemini-pro
-    // Try gemini-1.5-flash first as it's more available
     let model
     try {
       model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
@@ -184,39 +182,38 @@ async function analyzeWithGemini(
       }
     }
 
-    // Build the prompt - use neutral language to avoid safety filters
     const prompt = `You are analyzing a 3D scene reconstruction for investigation purposes.
 
-SCENE INFORMATION:
-Scene Name: "${sceneName}"
-Description: "${sceneDescription}"
-${modelMetadata ? `\n3D MODEL STRUCTURE:\n${modelMetadata}` : ''}
+    SCENE INFORMATION:
+    Scene Name: "${sceneName}"
+    Description: "${sceneDescription}"
+    ${modelMetadata ? `\n3D MODEL STRUCTURE:\n${modelMetadata}` : ''}
 
-TASK: Identify 3-4 important points of interest in this scene based on the description and objects present.
+    TASK: Identify 3-4 important points of interest in this scene based on the description and objects present.
 
-For each point, provide:
-- label: A clear name (e.g., "Key Object Location", "Area of Interest", "Furniture Position")
-- description: Why this location is significant (2 sentences)
-- position: 3D coordinates [x, y, z] where x=left/right, y=height, z=back/front (use values between -3 and 3)
-- category: One of "evidence", "anomaly", "object", or "furniture"
-- confidence: A number between 0.6 and 0.95
+    For each point, provide:
+    - label: A clear name (e.g., "Key Object Location", "Area of Interest", "Furniture Position")
+    - description: Why this location is significant (2 sentences)
+    - position: 3D coordinates [x, y, z] where x=left/right, y=height, z=back/front (use values between -3 and 3)
+    - category: One of "evidence", "anomaly", "object", or "furniture"
+    - confidence: A number between 0.6 and 0.95
 
-Return ONLY a valid JSON array in this format:
-[
-  {
-    "label": "Example Point",
-    "description": "This area shows important details relevant to the scene investigation.",
-    "position": [0.5, 0.5, -0.8],
-    "category": "evidence",
-    "confidence": 0.85
-  }
-]
+    Return ONLY a valid JSON array in this format:
+    [
+      {
+        "label": "Example Point",
+        "description": "This area shows important details relevant to the scene investigation.",
+        "position": [0.5, 0.5, -0.8],
+        "category": "evidence",
+        "confidence": 0.85
+      }
+    ]
 
-Analyze scene: "${sceneName}"
-Description: "${sceneDescription}"
-${modelMetadata ? `\nObjects in scene:\n${modelMetadata.split('\n').slice(0, 10).join('\n')}` : ''}
+    Analyze scene: "${sceneName}"
+    Description: "${sceneDescription}"
+    ${modelMetadata ? `\nObjects in scene:\n${modelMetadata.split('\n').slice(0, 10).join('\n')}` : ''}
 
-Return only the JSON array, no other text.`
+    Return only the JSON array, no other text.`
 
     console.log('Calling Gemini API with prompt length:', prompt.length)
     console.log('Model metadata extracted:', modelMetadata ? 'Yes' : 'No')
